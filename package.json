@@ -1,0 +1,23 @@
+{
+  "name": "merntodo",
+  "version": "1.0.0",
+  "description": "full stack mern to-do application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vincefio/mernToDo.git"
+  },
+  "author": "Vince Fury",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vincefio/mernToDo/issues"
+  },
+  "homepage": "https://github.com/vincefio/mernToDo#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4"
+  }
+}
