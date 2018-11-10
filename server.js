@@ -15,7 +15,8 @@ var routes = require('./routes')
 app.use('/', routes)
 
 //connect mongoose/MongoDB database
-mongoose.connect(`mongodb://root:merntodo1@ds053176.mlab.com:53176/todomern`, { useNewUrlParser: true })
+var mongoKey = require('./db/connection')
+mongoose.connect(mongoKey.mongoURI, { useNewUrlParser: true })
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
