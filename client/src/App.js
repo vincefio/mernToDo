@@ -13,8 +13,10 @@ class App extends Component {
       <Router>
         <div className="App">
           <SimpleAppBar />
-          <Items />
-          <Additem />
+          <div className="container">
+            <Items />
+            <Additem />
+          </div>
         </div>
       </Router>
     );

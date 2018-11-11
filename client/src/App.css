@@ -8,3 +8,11 @@
 .row{
     margin-bottom: 0;
 }
+
+i, .material-icons{
+    margin: 0 !important;
+}
+
+.btn-small{
+    margin-bottom: 10px !important;
+}
