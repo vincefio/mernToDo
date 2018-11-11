@@ -13,6 +13,12 @@ i, .material-icons{
     margin: 0 !important;
 }
 
-.btn-small{
-    margin-bottom: 10px !important;
+.clearfix {
+    overflow: auto;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
 }

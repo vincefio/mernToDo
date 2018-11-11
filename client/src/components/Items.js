@@ -32,8 +32,8 @@ export default class Items extends Component {
                 <p className="pageHeader">List</p>
                 <ul className="collection col s6">
                     {items.map((item, i) => {
-                        return <li key={item._id} href="#!" className="collection-item">{i + 1 + '. ' + item.title}
-                            <a className="red darken-1 btn-small project-delete right deletetButton"><i className="material-icons right">clear</i></a>
+                        return <li key={item._id} href="#!" className="clearfix collection-item">{i + 1 + '. ' + item.title}
+                            <a className="red darken-1 btn-small right project-delete deleteButton"><i className="material-icons">clear</i></a>
                         </li>
                     })}
                 </ul>
