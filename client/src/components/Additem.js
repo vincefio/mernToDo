@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 
 export default class Additem extends Component {
     constructor() {
@@ -20,7 +21,16 @@ export default class Additem extends Component {
     handleSubmit(event) {
         event.preventDefault()
 
-        console.log('submit')
+        //axios call/add item to db
+        axios.post('/item', {
+            title: this.state.toDoItem
+        })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
 
     render() {
