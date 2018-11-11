@@ -5,7 +5,21 @@ var router = express.Router()
 var Item = require('../db/models/Listitem')
 
 //first route
-//router.get('/', (req, res) => res.send(`yo`))
+router.get('/items', (req, res) => {
+
+    /*Item.find()
+        .then(items => res.json(items))*/
+    let results = '';
+
+    Item.find({}, function (err, res) {
+        results = res;
+    })
+        .then(function () {
+            // console.log('results ' + results)
+            res.send(results)
+        })
+
+})
 
 router.post('/item', (req, res) => {
     //console.log('req ' + JSON.stringify(req.body))

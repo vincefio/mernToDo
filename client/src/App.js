@@ -5,6 +5,7 @@ import SimpleAppBar from './components/Appbar'
 import Additem from './components/Additem'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Appbar from './components/Appbar'
+import Items from './components/Items'
 
 class App extends Component {
   render() {
@@ -12,9 +13,8 @@ class App extends Component {
       <Router>
         <div className="App">
           <SimpleAppBar />
+          <Items />
           <Additem />
-
-
         </div>
       </Router>
     );

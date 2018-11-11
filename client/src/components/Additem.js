@@ -36,7 +36,7 @@ export default class Additem extends Component {
     render() {
         return (
             <div>
-                <div className="row">
+                <div className="">
 
                     <form className="col s12" onSubmit={this.handleSubmit}>
                         <div className="row">
