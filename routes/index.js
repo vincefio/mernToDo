@@ -8,7 +8,17 @@ var Item = require('../db/models/Listitem')
 //router.get('/', (req, res) => res.send(`yo`))
 
 router.post('/item', (req, res) => {
-    console.log('user post route hit')
+    //console.log('req ' + JSON.stringify(req.body))
+
+    //add user to db
+    var item = new Item(req.body)
+
+    item.save(function (err) {
+        if (err) return handleError(err)
+
+        console.log('item saved!')
+    })
+
     res.send('done')
 })
 
