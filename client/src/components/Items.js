@@ -8,8 +8,10 @@ export default class Items extends Component {
         super(props);
         this.state = {
             items: [],
-            reset: this.props.reset
+            reset: false
         }
+
+        this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this)
     }
 
     componentDidMount() {
@@ -28,24 +30,20 @@ export default class Items extends Component {
             });
     }
 
-    componentWillRecieveProps(nextProps) {
-        // console.log('next props ' + nextProps)
+    componentWillReceiveProps(nextProps) {
+        console.log('next props ' + JSON.stringify(nextProps.reset))
+        var newThang = nextProps.reset
+        var self = this
         this.setState({
-
-            reset: this.props.reset
+            ...this.state,
+            reset: newThang
         })
-
-
     }
+
 
     render() {
         var items = this.state.items
 
-        if (this.props.reset) {
-            this.setState({
-                reset: this.props.reset
-            })
-        }
         return (
             <div className="row">
                 <p className="pageHeader">List</p>

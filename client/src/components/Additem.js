@@ -52,7 +52,7 @@ export default class Additem extends Component {
         return (
             <div>
                 <div className="">
-                    <Items reset={this.state.reset} handler={this.handler} />
+                    <Items reset={this.state.reset} />
                     <form className="col s12" onSubmit={this.handleSubmit}>
                         <div className="row">
                             <div className="input-field col s6">
