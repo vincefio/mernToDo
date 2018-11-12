@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-//import Items from './Items'
+import Items from './Items'
 
 export default class Additem extends Component {
     constructor() {
         super()
         this.state = {
-            toDoItem: ''
+            toDoItem: '',
+            reset: false
         }
 
         this.handleChange = this.handleChange.bind(this)
@@ -22,23 +23,36 @@ export default class Additem extends Component {
     handleSubmit(event) {
         event.preventDefault()
 
+        var self = this
         //axios call/add item to db
         axios.post('/item', {
             title: this.state.toDoItem
         })
             .then(function (response) {
                 console.log(response);
+
+                self.setState({
+                    ...self.state,
+                    reset: true
+                })
             })
             .catch(function (error) {
                 console.log(error);
             });
     }
 
+    handler() {
+        this.setState({
+            ...this.state,
+            reset: false
+        })
+    }
+
     render() {
         return (
             <div>
                 <div className="">
-
+                    <Items reset={this.state.reset} handler={this.handler} />
                     <form className="col s12" onSubmit={this.handleSubmit}>
                         <div className="row">
                             <div className="input-field col s6">

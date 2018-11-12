@@ -1,11 +1,14 @@
+import { log } from "util";
+
 import React, { Component } from 'react'
 import axios from 'axios'
 
 export default class Items extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            items: []
+            items: [],
+            reset: this.props.reset
         }
     }
 
@@ -25,8 +28,24 @@ export default class Items extends Component {
             });
     }
 
+    componentWillRecieveProps(nextProps) {
+        // console.log('next props ' + nextProps)
+        this.setState({
+
+            reset: this.props.reset
+        })
+
+
+    }
+
     render() {
         var items = this.state.items
+
+        if (this.props.reset) {
+            this.setState({
+                reset: this.props.reset
+            })
+        }
         return (
             <div className="row">
                 <p className="pageHeader">List</p>

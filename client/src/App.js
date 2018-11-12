@@ -14,7 +14,7 @@ class App extends Component {
         <div className="App">
           <SimpleAppBar />
           <div className="container">
-            <Items />
+
             <Additem />
           </div>
         </div>
