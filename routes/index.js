@@ -14,11 +14,25 @@ router.get('/items', (req, res) => {
     Item.find({}, function (err, res) {
         results = res;
     })
-        .then(function () {
-            // console.log('results ' + results)
+        .then(() => {
+            console.log('results ' + results)
             res.send(results)
         })
 
+})
+
+router.delete('/delete/:id', (req, res) => {
+    console.log('req.params ' + req.params.id)
+
+    Item.deleteOne({
+        _id: req.params.id
+    }, err => {
+        if (err) return handleError(err);
+
+        console.log('item deleted')
+    })
+
+    res.send('yayaya')
 })
 
 router.post('/item', (req, res) => {

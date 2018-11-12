@@ -6,8 +6,7 @@ export default class Additem extends Component {
     constructor() {
         super()
         this.state = {
-            toDoItem: '',
-            reset: false
+            toDoItem: ''
         }
 
         this.handleChange = this.handleChange.bind(this)
@@ -33,10 +32,12 @@ export default class Additem extends Component {
                 console.log(response);
 
                 self.setState({
-                    ...self.state,
-                    reset: true
+                    toDoItem: ''
                 })
 
+
+            })
+            .then(response => {
                 self.props.function()
             })
             .catch(function (error) {
@@ -44,12 +45,6 @@ export default class Additem extends Component {
             });
     }
 
-    /* handler() {
-         this.setState({
-             ...this.state,
-             reset: false
-         })
-     }*/
 
     render() {
 
@@ -61,7 +56,7 @@ export default class Additem extends Component {
                         <div className="row">
                             <div className="input-field col s6">
                                 <p className="pageHeader">Add Item</p>
-                                <input name="toDoItem" onChange={this.handleChange} placeholder="What needs to get done?" id="first_name" type="text" className="validate"></input>
+                                <input name="toDoItem" value={this.state.toDoItem} onChange={this.handleChange} placeholder="What needs to get done?" id="first_name" type="text" className="validate"></input>
                             </div>
                         </div>
                         <button className="btn waves-effect waves-light" type="submit" name="action">Add
