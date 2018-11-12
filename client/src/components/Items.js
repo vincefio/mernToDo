@@ -2,6 +2,7 @@ import { log } from "util";
 
 import React, { Component } from 'react'
 import axios from 'axios'
+import Additem from './Additem'
 
 export default class Items extends Component {
     constructor(props) {
@@ -11,7 +12,8 @@ export default class Items extends Component {
             reset: false
         }
 
-        this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this)
+        //this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this)
+        this.getRequest = this.getRequest.bind(this)
     }
 
     componentDidMount() {
@@ -30,17 +32,33 @@ export default class Items extends Component {
             });
     }
 
-    componentWillReceiveProps(nextProps) {
-        console.log('next props ' + JSON.stringify(nextProps.reset))
-        var newThang = nextProps.reset
-        var self = this
-        this.setState({
-            ...this.state,
-            reset: newThang
-        })
+    getRequest() {
+        //make request to get all db documents
+        let self = this
 
-        //nextProps.handler()
+        axios.get('/items')
+            .then((response) => {
+                //console.log(response.data);
+                this.setState({
+                    items: response.data
+                })
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
+
+    /* componentWillReceiveProps(nextProps) {
+         console.log('next props ' + JSON.stringify(nextProps.reset))
+         var newThang = nextProps.reset
+         var self = this
+         this.setState({
+             ...this.state,
+             reset: newThang
+         })
+ 
+         //nextProps.handler()
+     }*/
 
 
     render() {
@@ -48,6 +66,7 @@ export default class Items extends Component {
 
         return (
             <div className="row">
+
                 <p className="pageHeader">List</p>
                 <ul className="collection col s6">
                     {items.map((item, i) => {
@@ -57,7 +76,7 @@ export default class Items extends Component {
                     })}
                 </ul>
 
-
+                <Additem function={this.getRequest} />
             </div>
         )
     }

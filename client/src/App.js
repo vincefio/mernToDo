@@ -15,7 +15,7 @@ class App extends Component {
           <SimpleAppBar />
           <div className="container">
 
-            <Additem />
+            <Items />
           </div>
         </div>
       </Router>

@@ -24,6 +24,7 @@ export default class Additem extends Component {
         event.preventDefault()
 
         var self = this
+
         //axios call/add item to db
         axios.post('/item', {
             title: this.state.toDoItem
@@ -35,59 +36,42 @@ export default class Additem extends Component {
                     ...self.state,
                     reset: true
                 })
+
+                self.props.function()
             })
             .catch(function (error) {
                 console.log(error);
             });
     }
 
-    handler() {
-        this.setState({
-            ...this.state,
-            reset: false
-        })
-    }
+    /* handler() {
+         this.setState({
+             ...this.state,
+             reset: false
+         })
+     }*/
 
     render() {
-        if (this.state.reset) {
-            return (
-                <div>
-                    <div className="">
-                        <Items reset={this.state.reset} handler={this.handler} key="nadda" />
-                        <form className="col s12" onSubmit={this.handleSubmit}>
-                            <div className="row">
-                                <div className="input-field col s6">
-                                    <p className="pageHeader">Add Item</p>
-                                    <input name="toDoItem" onChange={this.handleChange} placeholder="What needs to get done?" id="first_name" type="text" className="validate"></input>
-                                </div>
+
+        return (
+            <div>
+                <div className="">
+
+                    <form className="col s12" onSubmit={this.handleSubmit}>
+                        <div className="row">
+                            <div className="input-field col s6">
+                                <p className="pageHeader">Add Item</p>
+                                <input name="toDoItem" onChange={this.handleChange} placeholder="What needs to get done?" id="first_name" type="text" className="validate"></input>
                             </div>
-                            <button className="btn waves-effect waves-light" type="submit" name="action">Add
-                            <i className="material-icons right">send</i>
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            )
-        } else {
-            return (
-                <div>
-                    <div className="">
-                        <Items reset={this.state.reset} key='yasss' />
-                        <form className="col s12" onSubmit={this.handleSubmit}>
-                            <div className="row">
-                                <div className="input-field col s6">
-                                    <p className="pageHeader">Add Item</p>
-                                    <input name="toDoItem" onChange={this.handleChange} placeholder="What needs to get done?" id="first_name" type="text" className="validate"></input>
-                                </div>
-                            </div>
-                            <button className="btn waves-effect waves-light" type="submit" name="action">Add
+                        </div>
+                        <button className="btn waves-effect waves-light" type="submit" name="action">Add
                                 <i className="material-icons right">send</i>
-                            </button>
-                        </form>
-                    </div>
+                        </button>
+                    </form>
                 </div>
-            )
-        }
+            </div>
+        )
+
 
     }
 }
