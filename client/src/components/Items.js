@@ -38,6 +38,8 @@ export default class Items extends Component {
             ...this.state,
             reset: newThang
         })
+
+        //nextProps.handler()
     }
 
 
